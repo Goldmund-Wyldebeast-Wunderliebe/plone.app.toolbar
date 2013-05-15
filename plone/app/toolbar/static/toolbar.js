@@ -450,6 +450,8 @@ define('js/jquery.iframe',[
     // # Initialization
     _init: function(iframe) {
       var self = this;
+      //trying to resolve problem with missing toolbar
+      $(this).delay(500);
 
       self._iframe = iframe;
       self.$el = $(iframe.el);
