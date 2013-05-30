@@ -250,6 +250,7 @@ function domReady(f){
 
 if (window.iframe_initialized !== true) {
   window.iframe_initialized = true;
+  $(this).delay(300);
   domReady(window.iframe_initialize);
 }
 
