@@ -131,6 +131,7 @@ window.IFrame.prototype = {
 
     // Create iframe
     var iframe = document.createElement('iframe');
+
     iframe.setAttribute('frameBorder', '0');
     iframe.setAttribute('border', '0');
     iframe.setAttribute('allowTransparency', 'true');
@@ -138,6 +139,7 @@ window.IFrame.prototype = {
     iframe.setAttribute('id', self.options.name);
     iframe.setAttribute('name', self.options.name);
     iframe.setAttribute('style', 'display:none;');
+    iframe.setAttribute('src', 'javascript:false');
 
     document.body.appendChild(iframe);
 
@@ -232,6 +234,7 @@ window.iframe_initialize = function() {
       window.iframe[name].add(matching[j]);
     }
   }
+
   for (iframe in window.iframe) {
     if (window.iframe.hasOwnProperty(iframe)) {
       window.iframe[iframe].open();
@@ -255,3 +258,12 @@ if (window.iframe_initialized !== true) {
 }
 
 }(window, window.document));
+
+try {
+    $(document).ready(function() {
+        if ($.browser.webkit) {
+            window.iframe_initialize();
+        }
+    });
+} catch(e) {
+};
